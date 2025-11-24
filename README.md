@@ -19,6 +19,9 @@ We will use oauth to enable dbt access our bq dataset. For this, we will do:
 `gcloud auth application-default login` first
 and then `dbt debug`.
 
+### Seeds
+Run dbt seed - to materialize seed files
+
 
 Snowflake schema
 - Multi dimension tables 
