@@ -1,5 +1,5 @@
 with src_sales as (
-  select * from `sales.Sales`
+  select * from {{ source('sales', 'Sales') }}
 )
 select
   sales_id,

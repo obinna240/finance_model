@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: sales
+    database: compute-1-367804
+    tables:
+      - name: Customer
+      - name: Product
+      - name: Sentiment
+      - name: Sales

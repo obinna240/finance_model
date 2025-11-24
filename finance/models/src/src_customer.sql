@@ -1,6 +1,6 @@
 --Model that creates first name last name for customers from the customers table
 with raw_customers as (
-  SELECT * FROM `compute-1-367804.sales.Customer`
+  SELECT * FROM {{ source('sales', 'Customer') }}
 )
 select
   customer_id,
