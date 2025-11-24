@@ -22,6 +22,14 @@ and then `dbt debug`.
 ### Seeds
 Run dbt seed - to materialize seed files
 
+### Sources
+Sources allow us define schema properties of already imported data into our DWH.
+As a result we get additional functionality such as data freshness.
+Sources are defined in a `.yml` file nested under a `sources` key.
+By default, `schema` will be the same as `name`. Add `schema` only if you
+want to use a source name that differs from existing schema.
+
+Now run `dbt compile` to check that the sources are ok.
 
 Snowflake schema
 - Multi dimension tables 
