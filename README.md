@@ -46,6 +46,22 @@ The most recent date returned will be compared against the warn and error fields
 a warning or an error will be generated.
 In ci/cd you can use: `echo $?` to get the response code. Which if it is `0` is a success else `1` is a failure. 
 
+
+## Snapshots in DBT
+SCD or Slowly Changing Dimensions are of 2 different types.
+Industry standard is to use type 2 SCDs.
+dbt does this by creating a dbt_valid_from and dbt_valid_to date field, and captures changes by setting a start and end date 
+for all old records and for dimensional changes it includes a start timestamp as the start and null as the end.
+The idea behind this is that users make changes to their data. And so what we want is to be able to capture those changes using snapshots.
+Snapshots are managed by yml files.
+
+We can run dbt snapshot frequently using our ci-cd tool, using the timestamp strategy.
+We can do this using our orchestration tool e.g Dagster, Airflow.
+
+There are a number of important concepts to review here including:
+1. Schema drift - Schema drift detection can be monitored using a Schema registry - which enforces a contract for the data structure, prevening producers from sending data that violates expected schema.
+2. Lakehose formats (Delta Lake and Apache Iceberg) - When writing to tables in lAKEHOUSES, A SCHEMA is implicitly enforced and any record that doesn't match the required schema is blocked, quarantined or evolved.
+
 Snowflake schema
 - Multi dimension tables 
 - Tables feed into multiple dimensions
