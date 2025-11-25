@@ -1,0 +1,5 @@
+#snapshots:
+#  - name: scd_product
+#    relation: {{ source('sales', 'Product' ) }}
+#    config:
+#
