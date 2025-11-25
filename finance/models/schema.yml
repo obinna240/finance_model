@@ -1,0 +1,28 @@
+models:
+  - name: dim_product_full_data
+    columns:
+      - name: product_name
+        data_tests:
+          - not_null
+      - name: product_category
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['Regular','Luxury','Custom']
+  - name: dim_product_sentiment
+    columns:
+      - name: product_id
+        data_tests:
+          - not_null
+      - name: product_name
+        data_tests:
+          - not_null
+      - name: product_category
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [ 'Regular','Luxury','Custom' ]
+
+
