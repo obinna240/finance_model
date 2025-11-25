@@ -31,6 +31,21 @@ want to use a source name that differs from existing schema.
 
 Now run `dbt compile` to check that the sources are ok.
 
+### Freshness
+One benefit of using Source files is being able to make a determination on the freshness of sources.
+If our pre-configured sources are stale, freshness enables us determine recency and the need to load.
+Source freshness can also be used for trend of data source freshness over time.
+Then run `dbt source freshness`
+The way this will work is such that dbt will create a query in the query logs of the form:
+
+```commandline
+select max(field name) as max_loaded_at, convert_timezone('UTC', convert_timestamp())
+as calculated_at from table_name
+```
+The most recent date returned will be compared against the warn and error fields. If it is older than both fields, either
+a warning or an error will be generated.
+In ci/cd you can use: `echo $?` to get the response code. Which if it is `0` is a success else `1` is a failure. 
+
 Snowflake schema
 - Multi dimension tables 
 - Tables feed into multiple dimensions
