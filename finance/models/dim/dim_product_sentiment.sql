@@ -6,11 +6,11 @@
     )
 }}
 with src_product_sentiment as (
-  select *
+  select *  from {{ ref('src_sentiment') }}
       {% if is_incremental() %}
       where date > (select max(date) from {{ this }})
       {% endif %}
-  from {{ ref('src_sentiment') }}
+
 ),
 product_data as (
  select * from {{ ref('src_products') }}
