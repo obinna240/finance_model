@@ -1,9 +1,14 @@
 models:
   - name: dim_product_full_data
+    config:
+      contract:
+        enforced: true
     columns:
       - name: product_name
         data_tests:
           - not_null
+        constraints:
+          - type: not_null
       - name: product_category
         data_tests:
           - not_null
