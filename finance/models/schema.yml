@@ -15,6 +15,7 @@ models:
           - accepted_values:
               arguments:
                 values: ['Regular','Luxury','Custom']
+              severity: warn
   - name: dim_product_sentiment
     columns:
       - name: product_id
