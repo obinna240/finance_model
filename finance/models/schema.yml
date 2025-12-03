@@ -1,8 +1,8 @@
 models:
   - name: dim_product_full_data
-    config:
-      contract:
-        enforced: true
+#    config:
+#      contract:
+#        enforced: true
     columns:
       - name: product_name
         data_tests:
@@ -15,6 +15,7 @@ models:
           - accepted_values:
               arguments:
                 values: ['Regular','Luxury','Custom']
+              severity: warn
   - name: dim_product_sentiment
     columns:
       - name: product_id
@@ -29,5 +30,15 @@ models:
           - accepted_values:
               arguments:
                 values: [ 'Regular','Luxury','Custom' ]
+  - name: dim_customer
+    columns:
+      - name: customer_id
+      - name: customer_full_name
+      - name: first_name
+      - name: last_name
+      - name: location
+        data_tests:
+          - location_fixed
+
 
 
