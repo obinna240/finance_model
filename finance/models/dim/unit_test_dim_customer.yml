@@ -1,0 +1,11 @@
+unit_tests:
+- name: basic_customer_exists
+  model: dim_customer
+  description: "Should return customer with id 1 and correct customer name"
+  given:
+    - input: ref('src_customer')
+      rows:
+        - {customer_id: 1,customer_full_name: 'Alice Smith',first_name: 'Alice', 'last_name': 'Smith', location: 'London'}
+  expect:
+    rows:
+      - {customer_id: 1,customer_full_name: 'Alice Smith',first_name: 'Alice', 'last_name': 'Smith', location: 'London'}
