@@ -79,6 +79,13 @@ To run test use `dbt test` and use `dbt test -x` to fail fast.
 note that the prove of a tests failure or successes is in running the compiled sql against the db. If it returns a value then the test has failed.
 You can also save test failures in the Database/DWH by adding to the dbt project.yml, `data_tests store failures: true`. All failing tests will then be stored in the DWH when db test is run. You can indicate a custom schema where the data tests will be stored. In this example we use `_test_failures`.
 
+## Model Contracts in DBT
+Contracts define the shape of the returned dataset.
+They should be defined for upstream models.
+They have a predictable structure.
+Usually DBT when creating a model will use the contract and constraints in generating the DDL.
+If the model's logic or input data doesn't conform to the shape then the model does not build.
+Data tests are usually more flexible and for validation after the model is built.
 
 Snowflake schema
 - Multi dimension tables 
